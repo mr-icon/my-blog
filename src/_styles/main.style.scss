@@ -1,0 +1,270 @@
+@import url("https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@import "./theme.style.scss";
+@import "./animations.style.scss";
+@import "./ace-dillinger.css";
+
+body {
+    margin: 0;
+    font-family: "Raleway", "Roboto", "Overpass Mono", monospace;
+    // components
+    [class$="Page"] {
+        // margin: 52px 0;
+        position: relative;
+    }
+    .Remarkable {
+        margin: auto;
+        text-align: justify;
+        max-width: 900px;
+        line-height: 2rem;
+        h1 {
+            margin: 1rem 0;
+            text-transform: uppercase;
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+        h2 {
+            margin: 1rem 0;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        h3 {
+            margin: 1rem 0;
+            text-transform: uppercase;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        ol {
+            margin-left: 2rem;
+            list-style: decimal-leading-zero;
+            & > li {
+                padding: 0.25rem;
+            }
+        }
+        img {
+            margin: 0.5rem auto;
+        }
+        p {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        a {
+            text-decoration: underline;
+            color: $theme-color;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        blockquote p {
+            font-style: italic;
+            padding: 0.66001rem 1rem 1rem;
+            border-left: 3px solid #a0aabf;
+        }
+        iframe {
+            width: 100%;
+        }
+    }
+    .Navbar {
+        position: relative;
+        z-index: 69;
+        color: white;
+        background-color: $theme-color;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .sidebar-toggle {
+            width: 40px;
+            height: 40px;
+            margin: 0 5px;
+        }
+    }
+    .Footer {
+        background-color: white;
+    }
+    .Sidebar {
+        padding: 0.5rem;
+        background: white;
+        width: 300px;
+        flex-shrink: 0;
+        z-index: 68;
+    }
+    .ToastNotifier {
+        position: fixed;
+        right: 1rem;
+        bottom: 4.75rem;
+        .toast {
+            .toast-body {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .toast-delete {
+                display: block;
+                width: 20px;
+                color: #fffa;
+                cursor: pointer;
+                font-size: 1.5rem;
+                text-align: center;
+                margin-left: 1rem;
+            }
+        }
+    }
+    .spinner {
+        animation: spinner 0.75s ease-in-out infinite;
+    }
+
+    @keyframes spinner {
+        0% {
+            transform: rotate(0);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .LoginPage {
+        .main-content {
+            height: calc(100vh - 108px);
+        }
+    }
+
+    .HomePage {
+        .container {
+            margin-left: auto;
+            margin-right: auto;
+            .blog-search {
+                width: 300px;
+            }
+            .blog-card-holder {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                .blog-card {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    width: 360px;
+                    box-shadow: 0 0 0.5rem 0 #0003;
+                    border-radius: 0.25rem;
+                    margin: 1rem;
+                    position: relative;
+                    overflow: hidden;
+                    transition: all 0.4s;
+                    &:hover {
+                        box-shadow: 0 0 1rem 0 #0005;
+                    }
+                    .blurred-bg {
+                        position: absolute;
+                        top: -10px;
+                        left: -10px;
+                        right: -10px;
+                        bottom: -10px;
+                        background-size: cover;
+                        filter: blur(5px);
+                    }
+                    .blog-image {
+                        z-index: 1;
+                        & > img {
+                            border-top-left-radius: 0.25rem;
+                            border-top-right-radius: 0.25rem;
+                            display: block;
+                        }
+                    }
+                    .blog-title {
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        z-index: 1;
+                        border-radius: 0.25rem;
+                        padding: 1rem;
+                        color: white;
+                        background-color: #0005;
+                    }
+                }
+            }
+        }
+    }
+    .PostPage {
+        display: flex;
+        .main-content {
+            flex-grow: 1;
+            .container {
+                margin-left: auto;
+                margin-right: auto;
+                // min-height: calc(100vh - 130px);
+            }
+        }
+    }
+    .DashboardPage {
+        display: flex;
+        .main-content {
+            border-right: 1px solid lightgray;
+            height: calc(100vh - 108px);
+            position: relative;
+            flex-grow: 1;
+            flex-shrink: 0;
+            width: calc(50% - 150px);
+            textarea {
+                resize: none;
+                height: calc(100vh - 172px);
+                font-family: monospace;
+                font-size: 1.2rem;
+            }
+            button[type="submit"] {
+                position: absolute;
+                right: 1rem;
+                top: 0.5rem;
+            }
+        }
+        .remarkable {
+            height: calc(100vh - 108px);
+            overflow: auto;
+            flex-grow: 1;
+            flex-shrink: 0;
+            width: calc(50% - 150px);
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        .Sidebar {
+            display: none;
+            width: 100%;
+            position: fixed;
+            left: 0;
+            bottom: 52px;
+            top: 52px;
+            right: 0;
+        }
+        .App.with-sidebar {
+            .Sidebar {
+                display: block;
+            }
+        }
+
+        .HomePage {
+            .container {
+                .blog-card-holder {
+                    .blog-card {
+                        width: 280px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 480px) {
+        .HomePage {
+            .container {
+                .blog-card-holder {
+                    .blog-card {
+                        width: auto;
+                    }
+                }
+            }
+        }
+    }
+}
